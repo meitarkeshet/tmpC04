@@ -9,6 +9,7 @@
 /*   Updated: 2020/09/16 22:12:29 by mkeshet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stdio.h>
 #include <unistd.h>
 
@@ -40,7 +41,7 @@ int		teststr(char *base)
 			j++;
 		}
 		if (base[i] == base[j])
-				return (0);
+			return (0);
 		i++;
 	}
 	return (1);
@@ -49,8 +50,9 @@ int		teststr(char *base)
 void	ft_putnbr_base(int nbr, char *base)
 {
 	unsigned int lng;
-	unsigned int unnbr = nbr;
+	unsigned int unnbr;
 
+	unnbr = nbr;
 	if (nbr < 0)
 	{
 		write(1, "-", 1);
@@ -59,19 +61,9 @@ void	ft_putnbr_base(int nbr, char *base)
 	lng = strln(base);
 	if (teststr(base) && unnbr >= lng)
 	{
-	ft_putnbr_base(unnbr / lng, base);
-	ft_putnbr_base(unnbr % lng, base);
+		ft_putnbr_base(unnbr / lng, base);
+		ft_putnbr_base(unnbr % lng, base);
 	}
 	else
 		write(1, &base[unnbr], 1);
-}
-
-int		main(void)
-{
-	int nbr = -2147483648;
-	char base[] = "0123456789abcdef";
-
-	ft_putnbr_base(nbr, base);
-
-	return (0);
 }
