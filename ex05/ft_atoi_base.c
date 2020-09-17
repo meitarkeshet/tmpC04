@@ -6,7 +6,7 @@
 /*   By: mkeshet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 11:21:34 by mkeshet           #+#    #+#             */
-/*   Updated: 2020/09/17 12:28:16 by mkeshet          ###   ########.fr       */
+/*   Updated: 2020/09/17 13:07:20 by mkeshet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,6 @@ int		strln(char *base)
 	return (i);
 }
 
-int		teststr(char *base)
-{
-	int i;
-	int j;
-
-	if (!base || strln(base) < 2)
-		return (0);
-	i = 0;
-	while (base[i])
-	{
-		j = 0;
-		if (base[i] == '+' || base[i] == 'i')
-			return (0);
-		while (base[i] != base[j + 1] && base[j])
-		{
-			j++;
-		}
-		if (base[i] == base[j])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-
 int		ft_isspace(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\n'
@@ -59,6 +34,34 @@ int		ft_isspace(char c)
 	else
 		return (0);
 }
+
+int		teststr(char *base)
+{
+	int i;
+	int j;
+
+	if (!base || strln(base) < 2)
+		return (0);
+	i = 0;
+	while (base[i])
+	{
+		j = i + 1;
+		if (base[i] == '+' || base[i] == '-')
+			return (0);
+		while (base[i] != base[j] && base[j])
+		{
+			j++;
+		}
+		if (base[i] == base[j])
+			return (0);
+		if (ft_isspace(base[i]) == 1)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+
 
 int		ft_atoi(char *str)
 {
@@ -108,8 +111,6 @@ void	ft_putnbr_base(int nbr, char *base)
 		write(1, &base[unnbr], 1);
 }
 
-
-
  int ft_atoi_base(char *str, char *base)
 {
 	int nbr;
@@ -129,6 +130,13 @@ void	ft_putnbr_base(int nbr, char *base)
 	}
 }
 
+int		main(void)
+{
+	char *str = "    200abc 900";
+	char *base = "0123456	789abcdef";
+	printf("\n%d", ft_atoi_base(str, base));
+
+}
 
 
 
