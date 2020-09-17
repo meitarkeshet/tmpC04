@@ -6,7 +6,7 @@
 /*   By: mkeshet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 17:18:50 by mkeshet           #+#    #+#             */
-/*   Updated: 2020/09/16 22:12:29 by mkeshet          ###   ########.fr       */
+/*   Updated: 2020/09/17 13:03:10 by mkeshet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int		teststr(char *base)
 	i = 0;
 	while (base[i])
 	{
-		j = 0;
-		if (base[i] == '+' || base[i] == 'i')
+		j = 1;
+		if (base[i] == '+' || base[i] == '-')
 			return (0);
-		while (base[i] != base[j + 1] && base[j])
+		while (base[i] != base[j] && base[j])
 		{
 			j++;
 		}
