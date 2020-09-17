@@ -6,22 +6,12 @@
 /*   By: mkeshet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 11:21:34 by mkeshet           #+#    #+#             */
-/*   Updated: 2020/09/17 13:21:31 by mkeshet          ###   ########.fr       */
+/*   Updated: 2020/09/17 14:13:25 by mkeshet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
-
-int		strln(char *base)
-{
-	int i;
-
-	i = 0;
-	while (base[i])
-		i++;
-	return (i);
-}
 
 int		ft_isspace(char c)
 {
@@ -39,7 +29,10 @@ int		teststr(char *base)
 	int i;
 	int j;
 
-	if (!base || strln(base) < 2)
+	i = 0;
+	while (base[i])
+		i++;
+	if (!base || i < 2)
 		return (0);
 	i = 0;
 	while (base[i])
@@ -89,16 +82,20 @@ int		ft_atoi(char *str)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	unsigned int lng;
-	unsigned int unnbr;
+	unsigned int	lng;
+	unsigned int	unnbr;
+	int				i;
 
+	i = 0;
+	while (base[i])
+		i++;
+	lng = i;
 	unnbr = nbr;
 	if (nbr < 0)
 	{
 		write(1, "-", 1);
 		unnbr = unnbr * (-1);
 	}
-	lng = strln(base);
 	if (unnbr >= lng)
 	{
 		ft_putnbr_base(unnbr / lng, base);
@@ -125,12 +122,4 @@ int		ft_atoi_base(char *str, char *base)
 			return (1);
 		}
 	}
-}
-
-int		main(void)
-{
-	char *str = "    200abc 900";
-	char *base = "0123456789abcdef";
-	printf("\n%d", ft_atoi_base(str, base));
-
 }
