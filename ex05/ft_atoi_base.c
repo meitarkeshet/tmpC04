@@ -6,13 +6,12 @@
 /*   By: mkeshet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 11:21:34 by mkeshet           #+#    #+#             */
-/*   Updated: 2020/09/17 13:07:20 by mkeshet          ###   ########.fr       */
+/*   Updated: 2020/09/17 13:21:31 by mkeshet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
-
 
 int		strln(char *base)
 {
@@ -60,8 +59,6 @@ int		teststr(char *base)
 	}
 	return (1);
 }
-
-
 
 int		ft_atoi(char *str)
 {
@@ -111,20 +108,20 @@ void	ft_putnbr_base(int nbr, char *base)
 		write(1, &base[unnbr], 1);
 }
 
- int ft_atoi_base(char *str, char *base)
+int		ft_atoi_base(char *str, char *base)
 {
 	int nbr;
-	
+
 	if (!(ft_atoi(str)))
 		return (0);
 	else
-	{	
+	{
 		nbr = (ft_atoi(str));
 		if (!(teststr(base)))
 			return (0);
-		else 
+		else
 		{
-		ft_putnbr_base(nbr, base);
+			ft_putnbr_base(nbr, base);
 			return (1);
 		}
 	}
@@ -133,11 +130,7 @@ void	ft_putnbr_base(int nbr, char *base)
 int		main(void)
 {
 	char *str = "    200abc 900";
-	char *base = "0123456	789abcdef";
+	char *base = "0123456789abcdef";
 	printf("\n%d", ft_atoi_base(str, base));
 
 }
-
-
-
-
