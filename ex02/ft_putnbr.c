@@ -6,7 +6,7 @@
 /*   By: mkeshet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 12:16:42 by mkeshet           #+#    #+#             */
-/*   Updated: 2020/09/16 12:21:27 by mkeshet          ###   ########.fr       */
+/*   Updated: 2020/09/17 14:16:19 by mkeshet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,3 @@ void	ft_putnbr(int nb)
 		}
 	}
 }
-
-
-
-int		main(void)
-{
-
-
-	ft_putnbr(-250);
-	return (0);
-}
-
-
-// Why does the negetive case work with large numbers?
