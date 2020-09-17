@@ -6,7 +6,7 @@
 /*   By: mkeshet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 11:21:34 by mkeshet           #+#    #+#             */
-/*   Updated: 2020/09/17 11:51:45 by mkeshet          ###   ########.fr       */
+/*   Updated: 2020/09/17 12:28:16 by mkeshet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	ft_putnbr_base(int nbr, char *base)
 		unnbr = unnbr * (-1);
 	}
 	lng = strln(base);
-	if (teststr(base) && unnbr >= lng)
+	if (unnbr >= lng)
 	{
 		ft_putnbr_base(unnbr / lng, base);
 		ft_putnbr_base(unnbr % lng, base);
@@ -113,13 +113,20 @@ void	ft_putnbr_base(int nbr, char *base)
  int ft_atoi_base(char *str, char *base)
 {
 	int nbr;
-	if (ft_putnbr_base(nbr, base))
-		return (0);
-	nbr = (ft_atoi(str));
 	
-	return (ft_putnbr_base(nbr, base));
-
-
+	if (!(ft_atoi(str)))
+		return (0);
+	else
+	{	
+		nbr = (ft_atoi(str));
+		if (!(teststr(base)))
+			return (0);
+		else 
+		{
+		ft_putnbr_base(nbr, base);
+			return (1);
+		}
+	}
 }
 
 
