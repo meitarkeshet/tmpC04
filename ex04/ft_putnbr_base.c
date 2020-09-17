@@ -27,7 +27,6 @@ int		teststr(char *base)
 	int i;
 	int j;
 
-//	printf("%d", strln(base));
 	if (!base || strln(base) < 2)
 		return (0);
 	i = 0;
@@ -47,31 +46,30 @@ int		teststr(char *base)
 	return (1);
 }
 
-
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int lng;
-	lng = strln(base);
+	unsigned int lng;
+	unsigned int unnbr = nbr;
 
-		if (nbr >= 0 && nbr < lng)
-		{
-			write(1, &nbr, 1);
-		}
-
-	if (teststr(base) && nbr >= lng)
+	if (nbr < 0)
 	{
-	ft_putnbr_base(nbr / lng, base);
-	ft_putnbr_base(nbr % lng, base);
+		write(1, "-", 1);
+		unnbr = unnbr * (-1);
+	}
+	lng = strln(base);
+	if (teststr(base) && unnbr >= lng)
+	{
+	ft_putnbr_base(unnbr / lng, base);
+	ft_putnbr_base(unnbr % lng, base);
 	}
 	else
-		write(1, &base[nbr], 1);
+		write(1, &base[unnbr], 1);
 }
 
 int		main(void)
 {
-	int nbr = 12525;
-
-	char base[] = "0123456789";
+	int nbr = -2147483648;
+	char base[] = "0123456789abcdef";
 
 	ft_putnbr_base(nbr, base);
 
